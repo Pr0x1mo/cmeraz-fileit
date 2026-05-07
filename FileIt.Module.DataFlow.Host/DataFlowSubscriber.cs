@@ -3,6 +3,7 @@
 // Output CSV goes to dataflow-final, request log gets updated with results.
 using System.Text.Json;
 using Azure.Messaging.ServiceBus;
+using FileIt.Domain.Common;
 using FileIt.Domain.Interfaces;
 using FileIt.Module.DataFlow.App;
 using FileIt.Module.DataFlow.App.Transform;
@@ -37,7 +38,7 @@ public class DataFlowSubscriber
     // Listens on the dataflow-transform queue for files ready to be transformed
     [Function(nameof(DataFlowSubscriber))]
     public async Task Run(
-        [ServiceBusTrigger("dataflow-transform")] ServiceBusReceivedMessage message,
+        [ServiceBusTrigger(MessagingNames.DataFlowTransformQueue)] ServiceBusReceivedMessage message,
         FunctionContext context
     )
     {

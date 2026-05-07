@@ -55,6 +55,15 @@ public class InfrastructureConfig : IInfrastructureConfig
 
         if (ParseConfigValue(APPLICATIONINSIGHTS_CONNECTION_STRING, out parsedValue))
             AppInsightsConnectionString = parsedValue;
+
+        // Throw exception if any required configuration values are missing
+        // This provides clear feedback at startup rather than cryptic NullReferenceExceptions later
+        if (missing.Count > 0)
+        {
+            throw new InvalidOperationException(
+                $"Required configuration values are missing: {string.Join(", ", missing)}. " +
+                "Ensure these are set in appsettings.json, environment variables, or user secrets.");
+        }
     }
 
     private bool ParseConfigValue(string key, out string? parsedValue)

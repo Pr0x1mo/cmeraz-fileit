@@ -1,6 +1,7 @@
 // Extensions/ServiceCollectionExtensions.cs
 using Azure.Identity;
 using Azure.Messaging.ServiceBus;
+using FileIt.Domain.Common;
 using FileIt.Domain.Interfaces;
 using FileIt.Infrastructure.Classification;
 using FileIt.Infrastructure.Data;
@@ -131,27 +132,27 @@ public static class ServiceCollectionExtensions
             clientBuilder
                 .AddClient<ServiceBusSender, ServiceBusClientOptions>(
                     (_, _, provider) =>
-                        provider.GetRequiredService<ServiceBusClient>().CreateSender("api-add")
+                        provider.GetRequiredService<ServiceBusClient>().CreateSender(MessagingNames.ApiAddQueue)
                 )
-                .WithName("api-add");
+                .WithName(MessagingNames.ApiAddQueue);
 
             clientBuilder
                 .AddClient<ServiceBusSender, ServiceBusClientOptions>(
                     (_, _, provider) =>
                         provider
                             .GetRequiredService<ServiceBusClient>()
-                            .CreateSender("api-add-topic")
+                            .CreateSender(MessagingNames.ApiAddTopic)
                 )
-                .WithName("api-add-topic");
+                .WithName(MessagingNames.ApiAddTopic);
 
             clientBuilder
                 .AddClient<ServiceBusSender, ServiceBusClientOptions>(
                     (_, _, provider) =>
                         provider
                             .GetRequiredService<ServiceBusClient>()
-                            .CreateSender("dataflow-transform")
+                            .CreateSender(MessagingNames.DataFlowTransformQueue)
                 )
-                .WithName("dataflow-transform");
+                .WithName(MessagingNames.DataFlowTransformQueue);
         });
 
         services.AddSingleton<ILoggerProvider>(new SerilogLoggerProvider(Log.Logger));

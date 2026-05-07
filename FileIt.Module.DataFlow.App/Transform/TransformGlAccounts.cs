@@ -58,11 +58,37 @@ public class TransformGlAccounts : ITransformGlAccounts
             lines.Add(csvLine);
         }
 
-        // First line is the header â€” skip it but use it to find our column positions
+        // First line is the header – skip it but use it to find our column positions
         var headers = lines[0].Split(',');
         int companyCodeIndex = Array.IndexOf(headers, " COMPANYCODE");
         int accountGroupIndex = Array.IndexOf(headers, " GLACCOUNTGROUP");
         int balanceSheetIndex = Array.IndexOf(headers, " ISBALANCESHEETACCOUNT");
+
+        // === FIX: Validate that all required columns exist in the CSV header ===
+        // Array.IndexOf returns -1 if not found; accessing fields[<negative index>] later
+        // would throw IndexOutOfRangeException. Fail fast with a clear message.
+        if (companyCodeIndex == -1)
+        {
+            throw new InvalidOperationException(
+                $"Required CSV column ' COMPANYCODE' not found in header. " +
+                $"Available columns: {string.Join(", ", headers)}. " +
+                $"Correlation {correlationId}.");
+        }
+        if (accountGroupIndex == -1)
+        {
+            throw new InvalidOperationException(
+                $"Required CSV column ' GLACCOUNTGROUP' not found in header. " +
+                $"Available columns: {string.Join(", ", headers)}. " +
+                $"Correlation {correlationId}.");
+        }
+        if (balanceSheetIndex == -1)
+        {
+            throw new InvalidOperationException(
+                $"Required CSV column ' ISBALANCESHEETACCOUNT' not found in header. " +
+                $"Available columns: {string.Join(", ", headers)}. " +
+                $"Correlation {correlationId}.");
+        }
+        // === END FIX ===
 
         // Group the rows by company code and account group and count them
         // We use a dictionary where the key is "COMPANYCODE|GLACCOUNTGROUP"

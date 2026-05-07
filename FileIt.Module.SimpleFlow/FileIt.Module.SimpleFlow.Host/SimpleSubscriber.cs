@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Azure.Messaging.ServiceBus;
+using FileIt.Domain.Common;
 using FileIt.Domain.Entities.Api;
 using FileIt.Module.SimpleFlow.App;
 using FileIt.Module.SimpleFlow.App.WaitOnApiUpload;
@@ -33,7 +34,7 @@ public class SimpleSubscriber
     /// <returns></returns>
     [Function(nameof(SimpleSubscriber))]
     public async Task Run(
-        [ServiceBusTrigger("api-add-topic", "api-add-simple-sub")] ServiceBusReceivedMessage message,
+        [ServiceBusTrigger(MessagingNames.ApiAddTopic, MessagingNames.ApiAddSimpleSubscription)] ServiceBusReceivedMessage message,
         FunctionContext context
     )
     {

@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Azure.Messaging.ServiceBus;
+using FileIt.Domain.Common;
 using FileIt.Module.Services.App;
 using FileIt.Module.Services.App.ApiAdd;
 using FileIt.Domain.Entities.Api;
@@ -23,7 +24,7 @@ public class ApiFunc
 
     [Function(nameof(ApiAdd))]
     public async Task ApiAdd(
-        [ServiceBusTrigger("api-add", Connection = "FileItServiceBus")]
+        [ServiceBusTrigger(MessagingNames.ApiAddQueue, Connection = "FileItServiceBus")]
             ServiceBusReceivedMessage message,
         FunctionContext context
     )
