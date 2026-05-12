@@ -24,7 +24,7 @@ public class ApiFunc
 
     [Function(nameof(ApiAdd))]
     public async Task ApiAdd(
-        [ServiceBusTrigger(MessagingNames.ApiAddQueue, Connection = "FileItServiceBus")]
+        [ServiceBusTrigger(MessagingNames.ApiAddQueue, Connection = "ServiceBus")]
             ServiceBusReceivedMessage message,
         FunctionContext context
     )
