@@ -6,7 +6,7 @@ This repository illustrates with a working proof of concept how we might reshape
 
 # Introduction
 
-ThereÃ¢â‚¬â„¢s an old Windows service in production that deserves more love than it is getting. It is well-architected, such that the business logic is nicely isolated. The service runs multiple workflows and each workflow is isolated and deployed separately. It is plug-in architecture. I really canÃ¢â‚¬â„¢t complain about supporting a beautiful piece of software, but it is lacking in some areas.
+ThereÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s an old Windows service in production that deserves more love than it is getting. It is well-architected, such that the business logic is nicely isolated. The service runs multiple workflows and each workflow is isolated and deployed separately. It is plug-in architecture. I really canÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t complain about supporting a beautiful piece of software, but it is lacking in some areas.
 
 # Problem Statement
 Maintenance on this Windows service has been neglected such that its reliability is degraded, its manual processes of deployment and testing invite human error, and its technology lies out of reach of modern advantages for observability, security, and processing.
@@ -20,16 +20,16 @@ Deployment is 100% manual. Sure, we run a pipeline to build the artifacts, but t
 There are none. This behemoth is over 40 kloc and most of it is dedicated to the mechanics of the service, its shared integrations, its scheduling. Most of this code is not business related and it feels like a waste of time to bother writing unit tests.
 
 ### Logging
-Because this service has no companion UI, logs are our only view into its health and performance. The service takes care of all plug-in logging through a global variable with its own signature and it takes care of the sinks. IÃ¢â‚¬â„¢d prefer the standard ILogger and utilize Serilog or NLog to manage the sinks. This would allow developers to not think about logging and do it frequently.
+Because this service has no companion UI, logs are our only view into its health and performance. The service takes care of all plug-in logging through a global variable with its own signature and it takes care of the sinks. IÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢d prefer the standard ILogger and utilize Serilog or NLog to manage the sinks. This would allow developers to not think about logging and do it frequently.
 
 ### Execution
 Asynchronous method signatures would suit this kind of application perfectly, and this .NET Framework 4.8 app could have been written to take advantage of it, but the original authors may have found it unnecessary at the time. The consequences of that decision are evident: processes run long and are vulnerable to resource contention and exceptions. The service startup executes all plug-ins at once, an event that often prompts with error messages.
 
 ### Single repository
-Each plug-in has its own repository. This makes it easy to dedicate a build pipeline for each plug-in, but it comes at a cost to overall maintenance. Since developers typically just open the plug-in solution, they arenÃ¢â‚¬â„¢t aware of design patterns established in other repositories. The result is a hodge-podge of patterns that complicate refactoring efforts.
+Each plug-in has its own repository. This makes it easy to dedicate a build pipeline for each plug-in, but it comes at a cost to overall maintenance. Since developers typically just open the plug-in solution, they arenÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t aware of design patterns established in other repositories. The result is a hodge-podge of patterns that complicate refactoring efforts.
 
 ### Observability
-Apart from the logging that we write to Event Viewer and to the database, we donÃ¢â‚¬â„¢t have an in-depth view of the applicationÃ¢â‚¬â„¢s health or an understanding of root cause when thereÃ¢â‚¬â„¢s a failure. In addition, to view the logs in either sink, we need an incident ticket and request an engineer to view the server logs and a DBA to view the database logs. This is more a complaint about how our own rules on accountability get in our way, but a rewrite of the service could include more thoughtful structures to help expedite RCA and eliminate obstacles.
+Apart from the logging that we write to Event Viewer and to the database, we donÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t have an in-depth view of the applicationÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s health or an understanding of root cause when thereÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢s a failure. In addition, to view the logs in either sink, we need an incident ticket and request an engineer to view the server logs and a DBA to view the database logs. This is more a complaint about how our own rules on accountability get in our way, but a rewrite of the service could include more thoughtful structures to help expedite RCA and eliminate obstacles.
 
 ### Reliability
 As an on-prem solution, the organization is responsible for uptime, failover, backups, patching, and other measures to avoid disaster and risk to reputation. Needless to say, these measures have been neglected, technical debt has accrued, and everyone is hoping that a migration to the cloud will save them the trouble.
@@ -38,7 +38,7 @@ As an on-prem solution, the organization is responsible for uptime, failover, ba
 Big jobs are a frequent and embarrassing challenge for the application. It never scales to meet occasions of high demand and by funneling thousands of processes into a few APIs, it can choke at unpredictable times. In this case, its failure is its own doing; a better designed application could achieve load leveling and process API calls in an orderly fashion.
 
 ### Development setup
-Developing for this application isnÃ¢â‚¬â„¢t the easiest. Developers get latest on the service and the plug-in. They monkey with post-build events and application startup in order to replicate the service operation and debug the plug-in. Since service and plug-ins are separate repositories, the post-build event script forces developers to conform their local repositories. 
+Developing for this application isnÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢t the easiest. Developers get latest on the service and the plug-in. They monkey with post-build events and application startup in order to replicate the service operation and debug the plug-in. Since service and plug-ins are separate repositories, the post-build event script forces developers to conform their local repositories. 
 
 These are the main drivers for a rewrite, and many of these issues could be reduced or resolved by migrating the Windows service to the cloud, in our case Azure. But apart from spinning up an expensive VM in a lift-and-shift exercise, we could reshape the application to fit native components for a cheaper, serverless, low maintenance solution.
 
@@ -67,7 +67,7 @@ The Windows service is a technology that strives to meet a business demand but n
 * Separate the application in the abstract from the infrastructure details, such that the path to changing cloud platform is well known and contained to specific areas.
 * Each workflow should have a separate application boundary and each feature of that workflow should have a separate logical boundary.
 * There must be clarity from each line of business on how failures should be treated, so that the application handles exceptions appropriately, however, a global strategy should exist to handle exceptions that otherwise evade capture.
-* Each workflow should have its own core functionality Ã¢â‚¬â€œ including an executable, configuration, dependency injection, and database access Ã¢â‚¬â€œ to ensure independence.
+* Each workflow should have its own core functionality ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ including an executable, configuration, dependency injection, and database access ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“ to ensure independence.
 
 ## Testing
 * Unit test projects serve multiple masters: enforcing architectural and functional requirements enforcement, ensuring quality, and acting as gatekeepers in the devops pipeline. Each project must have a companion unit test project that tests code in isolation, without downstream effects.
