@@ -1,0 +1,5 @@
+// Per-FA activity counts. Run this first to confirm telemetry is flowing.
+union traces, requests, exceptions
+| where timestamp > ago(15m)
+| summarize count() by cloud_RoleName, itemType
+| order by count_ desc

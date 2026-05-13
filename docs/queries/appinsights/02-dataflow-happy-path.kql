@@ -1,0 +1,8 @@
+// DataFlow happy path: blob drop -> Watcher -> Service Bus -> Subscriber -> transform -> final.
+// Replace the role name suffix with your dataflow FA name.
+traces
+| where timestamp > ago(30m)
+| where cloud_RoleName startswith "fa-fileit35-dataflow"
+| where message has_any ("DataFlowWatcher","DataFlowSubscriber","GLAccount","summary_")
+| project timestamp, operation_Name, message
+| order by timestamp asc

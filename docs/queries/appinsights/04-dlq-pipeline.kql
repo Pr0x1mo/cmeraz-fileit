@@ -1,0 +1,9 @@
+// DLQ pipeline: poison message hits 11 deliveries, classifier picks Poison via
+// BuiltInReason_MaxDeliveryCountExceeded, ingestion writes a DeadLetterRecord.
+// Works for any module by changing the role name filter.
+union traces, requests
+| where timestamp > ago(15m)
+| where cloud_RoleName has "fa-fileit35"
+| where message has_any ("DeadLetter","MaxDeliveryCountExceeded","Poison","DeadLetterRecord")
+| project timestamp, cloud_RoleName, operation_Name, message
+| order by timestamp asc

@@ -1,0 +1,9 @@
+// Cross-FA chain triggered by a blob drop into simple-source:
+//   SimpleWatcher -> api-add queue -> services.ApiAdd -> complex.Documents_Create -> SimpleSubscriber.
+// Useful for proving all 3 of those FAs in one shot.
+union traces, requests
+| where timestamp > ago(10m)
+| where cloud_RoleName has_any ("fa-fileit35-services","fa-fileit35-simple","fa-fileit35-complex")
+| where message has_any ("ApiAdd","SimpleSubscriber","SimpleWatcher","Documents_Create","ComplexDocument")
+| project timestamp, cloud_RoleName, operation_Name, message
+| order by timestamp asc
