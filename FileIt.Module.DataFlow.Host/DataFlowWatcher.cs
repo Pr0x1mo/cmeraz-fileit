@@ -1,6 +1,7 @@
-// This is the Azure Function that watches for new GL Account CSV files in blob storage.
-// In local dev (DEBUG) it uses a direct blob trigger.
-// In production it uses an Event Grid trigger â€” same pattern as SimpleWatcher.
+
+// Watches for new GL Account CSV files in blob storage.
+// Local dev (DEBUG): direct blob trigger. Production: Event Grid trigger.
+using Azure.Identity;
 using Azure.Messaging.EventGrid;
 using Azure.Storage.Blobs;
 using FileIt.Infrastructure.Extensions;
@@ -25,7 +26,6 @@ public class DataFlowWatcher
     }
 
 #if DEBUG
-    // Local dev â€” blob trigger fires directly when a file lands in dataflow-source
     [Function("DataFlowWatcherLocal")]
     public async Task RunLocal(
         [BlobTrigger("dataflow-source/{blobName}")] BlobClient blobClient,
@@ -34,52 +34,49 @@ public class DataFlowWatcher
     )
     {
         blobClient = blobClient ?? throw new ArgumentNullException(nameof(blobClient));
-
         var cancellationToken = context.CancellationToken;
-
-        // Pull the correlation ID from the blob request header
         string clientRequestId = await blobClient.GetCorrelationId();
-
-        using (
-            _logger!.BeginScope(
-                new Dictionary<string, object>() { { "CorrelationId", clientRequestId } }
-            )
-        )
+        using (_logger!.BeginScope(new Dictionary<string, object>() { { "CorrelationId", clientRequestId } }))
         {
-            _logger.LogInformation(
-                DataFlowEvents.DataFlowWatcher,
-                "Received blob trigger for blob: {BlobName}",
-                blobName
-            );
-
+            _logger.LogInformation(DataFlowEvents.DataFlowWatcher, "Received blob trigger for blob: {BlobName}", blobName);
             await _watcher.RunAsync(blobName, clientRequestId, cancellationToken);
         }
     }
 #endif
 
-    // Production â€” Event Grid trigger fires when a file lands in blob storage
     [Function(nameof(DataFlowWatcher))]
     public async Task Run([EventGridTrigger] EventGridEvent eventGridEvent, FunctionContext context)
     {
         var cancellationToken = context.CancellationToken;
-
         _logger.LogInformation("Received EventGridEvent: {@EventGridEvent}", eventGridEvent);
         var blobName = (eventGridEvent.Subject ?? string.Empty).Split('/').Last();
 
+        // Prefer the correlation id the uploader stamped into blob metadata (e.g. the
+        // operator UI) so the whole flow shares one id end to end. Fall back to the
+        // EventGrid event id only when no metadata id is present.
         string clientRequestId = eventGridEvent.Id;
-
-        using (
-            _logger!.BeginScope(
-                new Dictionary<string, object>() { { "CorrelationId", clientRequestId } }
-            )
-        )
+        try
         {
-            _logger.LogInformation(
-                DataFlowEvents.DataFlowWatcher,
-                "Received blob trigger for blob: {BlobName}",
-                blobName
-            );
+            var storageUri = Environment.GetEnvironmentVariable("FileItStorage__serviceUri") ?? string.Empty;
+            var clientId = Environment.GetEnvironmentVariable("AZURE_CLIENT_ID");
+            var blobClient = new BlobContainerClient(
+                new Uri(new Uri(storageUri), _config.SourceContainer + "/"),
+                new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = clientId }))
+                .GetBlobClient(blobName);
+            var metaId = await blobClient.GetCorrelationId();
+            if (!string.IsNullOrWhiteSpace(metaId))
+            {
+                clientRequestId = metaId;
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogWarning(ex, "Could not read blob metadata correlation id for {BlobName}, using EventGrid id.", blobName);
+        }
 
+        using (_logger!.BeginScope(new Dictionary<string, object>() { { "CorrelationId", clientRequestId } }))
+        {
+            _logger.LogInformation(DataFlowEvents.DataFlowWatcher, "Received blob trigger for blob: {BlobName}", blobName);
             await _watcher.RunAsync(blobName, clientRequestId, cancellationToken);
         }
     }

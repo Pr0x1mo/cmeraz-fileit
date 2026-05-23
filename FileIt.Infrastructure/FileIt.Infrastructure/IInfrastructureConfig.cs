@@ -18,7 +18,6 @@ public interface IInfrastructureConfig
 public class InfrastructureConfig : IInfrastructureConfig
 {
     private IConfiguration? configuration;
-
     public InfrastructureConfig() { }
 
     private const string SERVICEBUS_NAMESPACE = "SERVICEBUS_NAMESPACE";
@@ -33,31 +32,27 @@ public class InfrastructureConfig : IInfrastructureConfig
         this.configuration = configuration;
         List<string> missing = new List<string>();
         string? parsedValue;
-        if (ParseConfigValue(SERVICEBUS_NAMESPACE, out parsedValue))
-            BusNamespace = parsedValue;
-        else
-            missing.Add(SERVICEBUS_NAMESPACE);
 
+        // Required for every module: database connection. Without it, the platform's
+        // structured logging and audit tables don't work.
         if (ParseConfigValue(DB_CONNECTION_STRING, out parsedValue))
             DbConnectionString = parsedValue;
         else
             missing.Add(DB_CONNECTION_STRING);
 
+        // Optional per module: Service Bus and Storage. The UI module is read-only
+        // (queries SQL, uploads blobs via managed identity) and does not consume from
+        // Service Bus. Each module that needs these binds them at the function level
+        // and the runtime will throw at trigger registration time if they're missing.
+        if (ParseConfigValue(SERVICEBUS_NAMESPACE, out parsedValue))
+            BusNamespace = parsedValue;
         if (ParseConfigValue(SERVICEBUS_CONNECTION_STRING, out parsedValue))
             BusConnectionString = parsedValue;
-        else
-            missing.Add(SERVICEBUS_CONNECTION_STRING);
-
         if (ParseConfigValue(STORAGE_CONNECTION_STRING, out parsedValue))
             BlobConnectionString = parsedValue;
-        else
-            missing.Add(STORAGE_CONNECTION_STRING);
-
         if (ParseConfigValue(APPLICATIONINSIGHTS_CONNECTION_STRING, out parsedValue))
             AppInsightsConnectionString = parsedValue;
 
-        // Throw exception if any required configuration values are missing
-        // This provides clear feedback at startup rather than cryptic NullReferenceExceptions later
         if (missing.Count > 0)
         {
             throw new InvalidOperationException(

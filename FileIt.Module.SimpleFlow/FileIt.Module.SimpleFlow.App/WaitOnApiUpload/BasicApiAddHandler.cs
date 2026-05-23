@@ -52,11 +52,17 @@ public class BasicApiAddHandler : IBasicApiAddHandler
         SimpleRequestLog? entry = await _requestLogRepo.GetByClientRequestIdAsync(clientRequestId);
         if (entry == null)
         {
-            _logger.LogError(
+            // The api-add-topic is a fan-out. A broadcast that originated from the pure
+            // API path (services test producer or ApiAddCommand) has no SimpleRequestLog,
+            // because no file was ever dropped into simple-source for it. That is not an
+            // error for this subscriber; the message simply was not addressed to us.
+            // Returning cleanly completes the message so it does not retry and dead-letter.
+            _logger.LogInformation(
                 SimpleEvents.SimpleSubscriberRequestLogNotFound,
-                "SimpleRequestLog entry not found"
+                "No SimpleRequestLog for CorrelationId {CorrelationId}; broadcast not addressed to SimpleFlow, skipping.",
+                clientRequestId
             );
-            throw new Exception("SimpleRequestLog entry not found");
+            return;
         }
         if (string.IsNullOrWhiteSpace(entry.BlobName))
         {

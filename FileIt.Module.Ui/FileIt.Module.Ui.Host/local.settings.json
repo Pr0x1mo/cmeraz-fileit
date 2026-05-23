@@ -1,0 +1,22 @@
+{
+    "IsEncrypted":  false,
+    "Values":  {
+                   "AzureWebJobsStorage":  "UseDevelopmentStorage=true",
+                   "FUNCTIONS_WORKER_RUNTIME":  "dotnet-isolated",
+                   "ConnectionStrings__ServiceBus":  "Endpoint=sb://localhost;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;",
+                   "FileItServiceBus":  "Endpoint=sb://localhost;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SAS_KEY_VALUE;UseDevelopmentEmulator=true;",
+                   "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":  "false",
+                   "FileItDbConnection":  "Data Source=jmplabsv04.database.windows.net;Initial Catalog=FileIt;User ID=Proximus;Password=password;TrustServerCertificate=True;Encrypt=True;",
+                   "FileItStorage":  "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://localhost:10000/devstoreaccount1;",
+                   "SERVICEBUS_NAMESPACE":  "emulator",
+                   "EveryHourSchedule":  "0 0 * * * *",
+                   "EveryMinuteSchedule":  "0 */1 * * * *",
+                   "DemoTargets:ServicesHost":  "https://fa-fileit35-services-d7380327c31639.azurewebsites.net",
+                   "DemoTargets:dataflowStorageUri":  "https://fileit35dataflowstoragea.blob.core.windows.net",
+                   "DemoTargets:simpleStorageUri":  "https://fileit35simplestoragea.blob.core.windows.net",
+                   "Application":  "FileIt.Module.Ui.Host"
+               },
+    "Host":  {
+                 "LocalHttpPort":  7063
+             }
+}
