@@ -1,9 +1,48 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api, DeadLetter, Flow, LogRow } from "./api";
 import { Pipeline } from "./Pipeline";
+import { TestResults } from "./TestResults";
 
 const keyOf = (f: Flow) => f.correlationId ?? f.invocationId ?? `id:${f.id}`;
 const shortId = (s: string | null | undefined) => (s ? s.slice(0, 8) : "(no id)");
+
+function DragBar({ orientation, current, setValue, min, max, invert = false }: {
+    orientation: "vertical" | "horizontal";
+    current: number;
+    setValue: (v: number) => void;
+    min: number;
+    max: number;
+    invert?: boolean;
+}) {
+    const onMouseDown = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const startX = e.clientX;
+        const startY = e.clientY;
+        const startVal = current;
+        const move = (ev: MouseEvent) => {
+            const delta = orientation === "vertical" ? ev.clientX - startX : ev.clientY - startY;
+            const next = startVal + (invert ? -delta : delta);
+            setValue(Math.max(min, Math.min(max, next)));
+        };
+        const up = () => {
+            window.removeEventListener("mousemove", move);
+            window.removeEventListener("mouseup", up);
+            document.body.style.userSelect = "";
+            document.body.style.cursor = "";
+        };
+        document.body.style.userSelect = "none";
+        document.body.style.cursor = orientation === "vertical" ? "col-resize" : "row-resize";
+        window.addEventListener("mousemove", move);
+        window.addEventListener("mouseup", up);
+    };
+
+    const className =
+        orientation === "vertical"
+            ? "absolute top-0 left-0 h-full w-1.5 bg-slate-700 hover:bg-sky-500 cursor-col-resize z-10"
+            : "absolute top-0 left-0 w-full h-1.5 bg-slate-700 hover:bg-sky-500 cursor-row-resize z-10";
+
+    return <div className={className} onMouseDown={onMouseDown} />;
+}
 
 export default function App() {
     const [flows, setFlows] = useState<Flow[]>([]);
@@ -13,6 +52,9 @@ export default function App() {
     const [activeNode, setActiveNode] = useState<string | undefined>(undefined);
     const [busy, setBusy] = useState(false);
     const [toast, setToast] = useState<string | null>(null);
+    const [rightPanel, setRightPanel] = useState<"dlq" | "tests">("dlq");
+    const [rightWidth, setRightWidth] = useState(320);
+    const [bottomHeight, setBottomHeight] = useState(240);
 
     const refreshLists = async () => {
         try {
@@ -30,9 +72,6 @@ export default function App() {
         return () => clearInterval(id);
     }, []);
 
-    // Poll the timeline for the selected flow. A freshly triggered flow takes a second or
-    // two to land its rows in CommonLog, so we poll for ~20s and stop once rows arrive and
-    // stabilize (the pipeline's own replay animation drives the node lighting).
     const pollRef = useRef<number | null>(null);
     useEffect(() => {
         if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
@@ -53,7 +92,6 @@ export default function App() {
                     stableTicks = 0;
                     lastCount = rows.length;
                 }
-                // Stop once the row count has been stable for 3 ticks or we hit the attempt cap.
                 if (stableTicks >= 3 || attempts >= 20) {
                     if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; }
                 }
@@ -103,9 +141,20 @@ export default function App() {
     }, [timeline, activeNode]);
 
     return (
-        <div className="h-full w-full grid grid-cols-[280px_1fr_320px] grid-rows-[auto_1fr] gap-2 p-2">
+        <div className="h-full w-full grid grid-rows-[auto_1fr] gap-2 p-2"
+             style={{ gridTemplateColumns: `280px 1fr ${rightWidth}px` }}>
             <header className="col-span-3 flex items-center gap-3 px-3 py-2 bg-slate-900 rounded">
                 <div className="text-lg font-semibold whitespace-nowrap">FileIt operator console</div>
+                <div className="flex gap-1">
+                    <button onClick={() => setRightPanel("dlq")}
+                        className={`px-2 py-1 rounded text-xs ${rightPanel === "dlq" ? "bg-slate-700" : "bg-slate-800 hover:bg-slate-700"}`}>
+                        Dead-letter inbox
+                    </button>
+                    <button onClick={() => setRightPanel("tests")}
+                        className={`px-2 py-1 rounded text-xs ${rightPanel === "tests" ? "bg-slate-700" : "bg-slate-800 hover:bg-slate-700"}`}>
+                        Test results
+                    </button>
+                </div>
                 <div className="text-xs text-slate-400 flex-1 text-right whitespace-normal break-words min-w-0">{toast ?? "idle"}</div>
             </header>
 
@@ -127,7 +176,10 @@ export default function App() {
                     <div className="font-medium">Drop poison CSV</div>
                     <div className="text-xs text-slate-200/80">dataflow + DLQ self-heal</div>
                 </button>
-
+                <button disabled={busy} onClick={() => trigger("Run Salesforce ETL", api.runSalesforce)} className="rounded bg-amber-700 hover:bg-amber-600 disabled:opacity-50 px-3 py-2 text-left">
+                    <div className="font-medium">Run Salesforce ETL</div>
+                    <div className="text-xs text-slate-200/80">Databricks handoff (BIC file)</div>
+                </button>
                 <div className="text-xs uppercase tracking-wide text-slate-400 mt-4">Upload your own</div>
                 <label className="rounded bg-slate-700 hover:bg-slate-600 px-3 py-2 cursor-pointer text-sm">
                     <input type="file" className="hidden" onChange={async e => {
@@ -172,8 +224,11 @@ export default function App() {
                 <div className="flex-1 border-b border-slate-800 min-h-0">
                     <Pipeline timeline={timeline} onPickNode={setActiveNode} activeNode={activeNode} />
                 </div>
-                <div className="overflow-auto p-2 text-xs font-mono resize-y min-h-[120px] max-h-[70vh]" style={{ height: 240 }}>
-                    <div className="px-2 py-1 text-slate-400 uppercase tracking-wide break-all whitespace-normal">
+                <div className="relative overflow-auto p-2 text-xs font-mono"
+                     style={{ height: bottomHeight }}>
+                    <DragBar orientation="horizontal" current={bottomHeight}
+                        setValue={setBottomHeight} min={120} max={window.innerHeight * 0.8} invert />
+                    <div className="px-2 py-1 text-slate-400 uppercase tracking-wide break-all whitespace-normal mt-3">
                         {selected ? `Timeline for ${selected} ${activeNode ? `(filtered to ${activeNode})` : ""}` : "Pick a flow"}
                     </div>
                     {nodeRows.map(r => (
@@ -186,20 +241,28 @@ export default function App() {
                 </div>
             </main>
 
-            <aside className="row-start-2 bg-slate-900 rounded p-3 overflow-auto">
-                <div className="text-xs uppercase tracking-wide text-slate-400 mb-2">Dead-letter inbox</div>
-                {dlq.length === 0 && <div className="text-xs text-slate-500">No dead-lettered records</div>}
-                {dlq.map(d => (
-                    <div key={d.deadLetterRecordId} className="border border-slate-800 rounded p-2 mb-2 text-xs">
-                        <div className="flex items-center justify-between">
-                            <span className="font-mono">#{d.deadLetterRecordId}</span>
-                            <span className="text-rose-400">{d.failureCategory}</span>
-                        </div>
-                        <div className="text-slate-400">{d.sourceEntityName}</div>
-                        <div className="text-slate-500">delivery {d.deliveryCount}, {d.status}</div>
-                        <button onClick={() => api.replay(d.deadLetterRecordId).then(() => setToast(`Replay queued for #${d.deadLetterRecordId}`)).catch(e => setToast(`Replay failed: ${e?.message}`))} className="mt-1 px-2 py-0.5 rounded bg-emerald-800 hover:bg-emerald-700">Replay</button>
-                    </div>
-                ))}
+            <aside className="relative row-start-2 bg-slate-900 rounded p-3 overflow-auto">
+                <DragBar orientation="vertical" current={rightWidth}
+                    setValue={setRightWidth} min={240} max={800} invert />
+                {rightPanel === "tests" ? (
+                    <TestResults />
+                ) : (
+                    <>
+                        <div className="text-xs uppercase tracking-wide text-slate-400 mb-2">Dead-letter inbox</div>
+                        {dlq.length === 0 && <div className="text-xs text-slate-500">No dead-lettered records</div>}
+                        {dlq.map(d => (
+                            <div key={d.deadLetterRecordId} className="border border-slate-800 rounded p-2 mb-2 text-xs">
+                                <div className="flex items-center justify-between">
+                                    <span className="font-mono">#{d.deadLetterRecordId}</span>
+                                    <span className="text-rose-400">{d.failureCategory}</span>
+                                </div>
+                                <div className="text-slate-400">{d.sourceEntityName}</div>
+                                <div className="text-slate-500">delivery {d.deliveryCount}, {d.status}</div>
+                                <button onClick={() => api.replay(d.deadLetterRecordId).then(() => setToast(`Replay queued for #${d.deadLetterRecordId}`)).catch(e => setToast(`Replay failed: ${e?.message}`))} className="mt-1 px-2 py-0.5 rounded bg-emerald-800 hover:bg-emerald-700">Replay</button>
+                            </div>
+                        ))}
+                    </>
+                )}
             </aside>
         </div>
     );

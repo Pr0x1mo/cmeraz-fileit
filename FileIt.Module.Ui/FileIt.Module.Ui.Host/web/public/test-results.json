@@ -1,0 +1,1672 @@
+﻿{
+    "generatedUtc":  "2026-05-29T00:56:15.0956547Z",
+    "total":  261,
+    "passed":  261,
+    "failed":  0,
+    "skipped":  0,
+    "projects":  [
+                     {
+                         "project":  "FileIt.Architecture.Test",
+                         "total":  48,
+                         "passed":  48,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOtherApps(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0048919"
+                                       },
+                                       {
+                                           "name":  "Module_HostPublicTypesUnderHostNamespace(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0008188"
+                                       },
+                                       {
+                                           "name":  "Module_AppPublicTypesUnderAppNamespace(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0011767"
+                                       },
+                                       {
+                                           "name":  "Rule03_DomainHasNoAzureOrEFDependency",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0097431"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOwnHost(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0047057"
+                                       },
+                                       {
+                                           "name":  "Rule14_InterfacesStartWithI",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0202921"
+                                       },
+                                       {
+                                           "name":  "Module_AppPublicTypesUnderAppNamespace(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0006712"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOwnHost(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0034028"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherHosts(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0095599"
+                                       },
+                                       {
+                                           "name":  "Module_AppReferencesDomain(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0042934"
+                                       },
+                                       {
+                                           "name":  "Rule07_AppProjectsDoNotReferenceTheirOwnHost",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0182616"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOwnHost(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0027975"
+                                       },
+                                       {
+                                           "name":  "Rule16_NoAsyncVoidExceptInEventHandlers",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:01.1274927"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotUseAzureSdkDirectly(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0034493"
+                                       },
+                                       {
+                                           "name":  "Rule08_AppProjectsDoNotReferenceOtherAppProjects",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0188224"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotUseAzureSdkDirectly(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0070640"
+                                       },
+                                       {
+                                           "name":  "Rule13_CommandsQueriesHandlersUseConventionalSuffix",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0101709"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotUseAzureSdkDirectly(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0024259"
+                                       },
+                                       {
+                                           "name":  "Module_AppPublicTypesUnderAppNamespace(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0011311"
+                                       },
+                                       {
+                                           "name":  "Rule11_AppPublicTypesLiveUnderAppNamespace",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0154598"
+                                       },
+                                       {
+                                           "name":  "Module_AppReferencesDomain(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0033979"
+                                       },
+                                       {
+                                           "name":  "Module_AppReferencesDomain(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0061763"
+                                       },
+                                       {
+                                           "name":  "Rule05_InfrastructureHasNoHostDependency",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0422440"
+                                       },
+                                       {
+                                           "name":  "Module_HostPublicTypesUnderHostNamespace(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0007476"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherApps(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0098305"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOtherApps(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0037960"
+                                       },
+                                       {
+                                           "name":  "Module_HostPublicTypesUnderHostNamespace(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0020380"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOtherApps(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0116011"
+                                       },
+                                       {
+                                           "name":  "Rule04_InfrastructureHasNoModuleDependency",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0697761"
+                                       },
+                                       {
+                                           "name":  "Rule02_DomainHasNoModuleDependency",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0120371"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherHosts(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0117820"
+                                       },
+                                       {
+                                           "name":  "Rule15_AppProjectsDoNotInstantiateAzureSdkClients",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0192186"
+                                       },
+                                       {
+                                           "name":  "Module_AppReferencesDomain(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0026645"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotUseAzureSdkDirectly(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0243116"
+                                       },
+                                       {
+                                           "name":  "Rule12_HostPublicTypesLiveUnderHostNamespace",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0066035"
+                                       },
+                                       {
+                                           "name":  "Rule09_HostsDoNotReferenceOtherHosts",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0424798"
+                                       },
+                                       {
+                                           "name":  "Rule06_AppProjectsReferenceDomain",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0180536"
+                                       },
+                                       {
+                                           "name":  "Rule01_DomainHasNoInfrastructureDependency",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:02.8783122"
+                                       },
+                                       {
+                                           "name":  "Rule10_HostsDoNotReferenceOtherModuleAppProjects",
+                                           "className":  "FileIt.Architecture.Test.ArchitectureRules",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0305091"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherHosts(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0076827"
+                                       },
+                                       {
+                                           "name":  "Module_AppPublicTypesUnderAppNamespace(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0014107"
+                                       },
+                                       {
+                                           "name":  "Module_HostPublicTypesUnderHostNamespace(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0012696"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherApps(DataFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0074419"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOtherApps(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0033459"
+                                       },
+                                       {
+                                           "name":  "Module_AppDoesNotReferenceOwnHost(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0112384"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherApps(SimpleFlow)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0095004"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherApps(Services)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0112844"
+                                       },
+                                       {
+                                           "name":  "Module_HostDoesNotReferenceOtherHosts(Complex)",
+                                           "className":  null,
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0098492"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Domain.Test",
+                         "total":  1,
+                         "passed":  1,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "TestMethod1",
+                                           "className":  "FileIt.Domain.Test.UnitTest1",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0385155"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Infrastructure.Integration",
+                         "total":  4,
+                         "passed":  4,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "TestAdd",
+                                           "className":  "FileIt.Infrastructure.Integration.SerilogTest",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.4213147"
+                                       },
+                                       {
+                                           "name":  "TestUpdate",
+                                           "className":  "FileIt.Infrastructure.Integration.ApiLogRepoTest",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1603958"
+                                       },
+                                       {
+                                           "name":  "TestEmit",
+                                           "className":  "FileIt.Infrastructure.Integration.DatabaseSinkTest",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:01.2694335"
+                                       },
+                                       {
+                                           "name":  "TestAdd",
+                                           "className":  "FileIt.Infrastructure.Integration.SerilogTest",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:08.9508375"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Infrastructure.Test",
+                         "total":  172,
+                         "passed":  172,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_MatchingEnvAndId_ReturnsLog",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestCommonLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0333527"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_HappyPath_ReturnsParsedResult",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1609274"
+                                       },
+                                       {
+                                           "name":  "AddAsync_NullEnvironmentInConfig_DefaultsToEmpty",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestSimpleRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0058622"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_DifferentEnvironment_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestSimpleRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0063050"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_503_ExceptionMessageIncludesRetryAfter",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0047908"
+                                       },
+                                       {
+                                           "name":  "InsertAsync_NullRecord_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0015408"
+                                       },
+                                       {
+                                           "name":  "UpdateTransformResultAsync_StampsModifiedOn",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDataFlowRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0313760"
+                                       },
+                                       {
+                                           "name":  "Classify_HeuristicMatchIsCaseInsensitive",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0004244"
+                                       },
+                                       {
+                                           "name":  "Classify_DescriptionHas503_ReturnsDownstreamUnavailable",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0004154"
+                                       },
+                                       {
+                                           "name":  "Classify_ExplicitHintCaseInsensitive_StillParses",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0013013"
+                                       },
+                                       {
+                                           "name":  "Classify_NullInput_ThrowsArgumentNullException",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005909"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_NullIdempotencyKey_DoesNotSendHeader",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0052728"
+                                       },
+                                       {
+                                           "name":  "AddAsync_HappyPath_PersistsAllFields",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1141986"
+                                       },
+                                       {
+                                           "name":  "SoftDeleteAsync_Existing_StampsDeletedUtcAndReturnsTrue",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0356687"
+                                       },
+                                       {
+                                           "name":  "EmitAsync_CancellationRequested_ThrowsBeforeSending",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestPublishTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0077955"
+                                       },
+                                       {
+                                           "name":  "SoftDeleteAsync_Missing_ReturnsFalse",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0034733"
+                                       },
+                                       {
+                                           "name":  "Classify_MaxDeliveryCountExceeded_ReturnsPoison",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005019"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_BuildsRecordFromEnvelopeAndClassification",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0105148"
+                                       },
+                                       {
+                                           "name":  "TryGetAsync_Existing_ReturnsHit",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexIdempotencyRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0815727"
+                                       },
+                                       {
+                                           "name":  "AddAsync_StampsCreatedOnAndModifiedOn",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0523501"
+                                       },
+                                       {
+                                           "name":  "Classify_ExplicitHintTransient_ReturnsTransient",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0055381"
+                                       },
+                                       {
+                                           "name":  "Classify_ExplicitHintInvalidValue_FallsThroughToNextRule",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0039095"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_GenericPersistenceException_Rethrows",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0075591"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_SenderFactoryThrows_PushesToUnderReview",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0100379"
+                                       },
+                                       {
+                                           "name":  "GetByPublicIdAsync_Missing_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0021027"
+                                       },
+                                       {
+                                           "name":  "EmitAsync_SenderFactoryThrows_LogsAndRethrows",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestPublishTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0091656"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_AddsIdempotencyKeyHeader",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0059859"
+                                       },
+                                       {
+                                           "name":  "SaveAsync_CancellationRequested_PropagatesOperationCanceledException",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexIdempotencyRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0055107"
+                                       },
+                                       {
+                                           "name":  "GetEventIdId_NoEventIdProperty_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0008949"
+                                       },
+                                       {
+                                           "name":  "ListAsync_OrdersByModifiedUtcDescending",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0042440"
+                                       },
+                                       {
+                                           "name":  "Classify_BuiltInReasonIsCaseSensitive",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0003736"
+                                       },
+                                       {
+                                           "name":  "Classify_PoisonPayloadPrefixInDescription_ReturnsPoison",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0004921"
+                                       },
+                                       {
+                                           "name":  "Classify_TtlExpired_ReturnsDownstreamUnavailable",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0004477"
+                                       },
+                                       {
+                                           "name":  "ListAsync_Pagination_RespectsSkipAndTake",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0187946"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_FindsCorrectRowAmongMultiple",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0059963"
+                                       },
+                                       {
+                                           "name":  "SaveAsync_PersistsAllFields",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexIdempotencyRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0037572"
+                                       },
+                                       {
+                                           "name":  "ReplayBatchAsync_NoRecords_ReturnsEmpty",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0100149"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_DifferentEnvironment_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestSimpleRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0052241"
+                                       },
+                                       {
+                                           "name":  "Constructor_NullRepo_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0165456"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_422_ThrowsHttpRequestException",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0047533"
+                                       },
+                                       {
+                                           "name":  "GetByIdAsync_ExistingRow_ReturnsIt",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0621507"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_CancellationRequested_ThrowsBeforeWork",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0093711"
+                                       },
+                                       {
+                                           "name":  "Classify_PoisonMarkerWithFalsyValue_StillClassifiesAsPoison",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005165"
+                                       },
+                                       {
+                                           "name":  "ExportAsync_OrdersByCreatedUtcAscending",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0306747"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_MissingRequest_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0135312"
+                                       },
+                                       {
+                                           "name":  "ExistsAsync_ExistingTuple_ReturnsTrue",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0202127"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_Existing_ReturnsRow",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDataFlowRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0312009"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_EmptyBody_PushesToUnderReview",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0041451"
+                                       },
+                                       {
+                                           "name":  "UploadAsync_EmptyLocation_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0052739"
+                                       },
+                                       {
+                                           "name":  "Emit_EmptyConnectionString_ShortCircuitsWithoutThrowing",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0018288"
+                                       },
+                                       {
+                                           "name":  "InsertAsync_PreservesExistingCreatedUtcAndStatusUpdatedUtc",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0033572"
+                                       },
+                                       {
+                                           "name":  "DownloadAsync_EmptyFilename_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0109793"
+                                       },
+                                       {
+                                           "name":  "Classify_UnknownReasonAndUnknownDescription_ReturnsUnknown",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0003937"
+                                       },
+                                       {
+                                           "name":  "AddAsync_HappyPath_PersistsAllFields",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:02.0304043"
+                                       },
+                                       {
+                                           "name":  "Constructor_NullSenderFactory_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0044544"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_HappyPath_CallsClassifierThenInsert",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0168898"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_Missing_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestCommonLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0026869"
+                                       },
+                                       {
+                                           "name":  "EmitAsync_HappyPath_SendsMessageWithCorrelationIdAndSubject",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestPublishTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0199343"
+                                       },
+                                       {
+                                           "name":  "UpdateLifecycleAsync_HappyPath_UpdatesAllProvidedFields",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0368264"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_ExistingRequest_ReturnsRow",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.4111879"
+                                       },
+                                       {
+                                           "name":  "ReplayBatchAsync_NegativeBatchSize_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0035439"
+                                       },
+                                       {
+                                           "name":  "Constructor_NullFactory_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0016745"
+                                       },
+                                       {
+                                           "name":  "TryGetAsync_FindsCorrectKeyAmongMultiple",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexIdempotencyRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0040986"
+                                       },
+                                       {
+                                           "name":  "MoveAsync_HappyPath_CallsCopyThenDelete",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1449934"
+                                       },
+                                       {
+                                           "name":  "Classify_TruncatesLongDescriptionInReasoning",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005597"
+                                       },
+                                       {
+                                           "name":  "TestMethod1",
+                                           "className":  "FileIt.Infrastructure.Test.UnitTest1",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0197671"
+                                       },
+                                       {
+                                           "name":  "Classify_DescriptionHasTimeout_ReturnsTransient",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0004155"
+                                       },
+                                       {
+                                           "name":  "SendMessageAsync_StampsEnqueuedTimeUtcApplicationProperty",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBusTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0611635"
+                                       },
+                                       {
+                                           "name":  "InsertAsync_HappyPath_PersistsAndReturnsRecord",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1613092"
+                                       },
+                                       {
+                                           "name":  "AddAsync_ViaBaseRepo_PersistsLog",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestCommonLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1029980"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_SendSucceeds_AdvancesToReplayedAndIncrementsAttempt",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0099143"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_NullId_ReturnsNullWhenNoMatch",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestCommonLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0025428"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_OperationCanceledFromRepo_Rethrows",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0078684"
+                                       },
+                                       {
+                                           "name":  "Classify_DescriptionHasJsonException_ReturnsSchemaViolation",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0010268"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_PostsToCorrectEndpoint",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0116329"
+                                       },
+                                       {
+                                           "name":  "Classify_ExplicitHintWinsOverEverythingElse",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005779"
+                                       },
+                                       {
+                                           "name":  "AddAsync_HappyPath_PersistsAllFields",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0698368"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_RecordNotFound_ReturnsNotFoundNoLifecycleUpdate",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0196835"
+                                       },
+                                       {
+                                           "name":  "ReplayBatchAsync_ZeroBatchSize_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0077603"
+                                       },
+                                       {
+                                           "name":  "UpdateTransformResultAsync_Missing_DoesNothing",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDataFlowRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0054436"
+                                       },
+                                       {
+                                           "name":  "GetEventIdName_NoEventIdProperty_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005149"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_IdempotencyConflict_ReturnsExistingRecord",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1094966"
+                                       },
+                                       {
+                                           "name":  "UploadAsync_EmptyFilename_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0052805"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_NullCorrelationId_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestSimpleRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0053829"
+                                       },
+                                       {
+                                           "name":  "GetAllAsync_ReturnsAllRows",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0257713"
+                                       },
+                                       {
+                                           "name":  "GetEventIdId_StructuredEventId_ReturnsId",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0089981"
+                                       },
+                                       {
+                                           "name":  "InsertAsync_StampsCreatedUtcAndStatusUpdatedUtcWhenDefault",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0021979"
+                                       },
+                                       {
+                                           "name":  "DownloadAsync_EmptyLocation_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0060285"
+                                       },
+                                       {
+                                           "name":  "EmitAsync_StampsEnqueuedTimeUtcApplicationProperty",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestPublishTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0112231"
+                                       },
+                                       {
+                                           "name":  "GetPendingReplayBatchAsync_NegativeMaxRecords_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0022577"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_NullEnvelope_ThrowsArgumentNullException",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0073243"
+                                       },
+                                       {
+                                           "name":  "Classify_SessionLockLost_ReturnsTransient",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005268"
+                                       },
+                                       {
+                                           "name":  "ReplayBatchAsync_HappyPath_ReplaysAllRecordsInOrder",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0197254"
+                                       },
+                                       {
+                                           "name":  "EmitAsync_NullResponse_ThrowsArgumentNullException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestPublishTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0221620"
+                                       },
+                                       {
+                                           "name":  "GetDocumentAsync_404_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0047148"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_CancellationRequested_PropagatesOperationCanceledException",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0063681"
+                                       },
+                                       {
+                                           "name":  "SendMessageAsync_HappyPath_BuildsMessageWithRequiredHeaders",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBusTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0922039"
+                                       },
+                                       {
+                                           "name":  "GetDocumentAsync_GetsToCorrectEndpoint",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0053894"
+                                       },
+                                       {
+                                           "name":  "GetEventIdId_EventIdIsScalarNotStructure_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0008216"
+                                       },
+                                       {
+                                           "name":  "Constructor_NullClassifier_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0118787"
+                                       },
+                                       {
+                                           "name":  "GetPendingReplayBatchAsync_RespectsMaxRecords",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0116052"
+                                       },
+                                       {
+                                           "name":  "ListAsync_IncludeDeleted_ReturnsAll",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0185891"
+                                       },
+                                       {
+                                           "name":  "TryGetAsync_Missing_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexIdempotencyRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0054841"
+                                       },
+                                       {
+                                           "name":  "MoveAsync_EmptyBlobName_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:01.6744103"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_EmptySourceEntity_PushesToUnderReview",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0108370"
+                                       },
+                                       {
+                                           "name":  "SoftDeleteAsync_AlreadyDeleted_ReturnsFalse",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0044243"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_FindsCorrectAmongMultiple",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestCommonLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0074983"
+                                       },
+                                       {
+                                           "name":  "SendMessageAsync_CancellationRequested_ThrowsBeforeSending",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBusTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0102357"
+                                       },
+                                       {
+                                           "name":  "ReplayBatchAsync_OneRecordFails_OthersStillProcess",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0128457"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_503_ThrowsComplexApiUnavailableException",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0062015"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_NullInitiatedBy_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0094236"
+                                       },
+                                       {
+                                           "name":  "GetByPublicIdAsync_Existing_ReturnsRow",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0081763"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_SendFails_LeavesPendingAndReturnsSendFailed",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0131792"
+                                       },
+                                       {
+                                           "name":  "EmitAsync_EmptyTopicName_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestPublishTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0100003"
+                                       },
+                                       {
+                                           "name":  "GetDocumentAsync_HappyPath_ReturnsParsedDto",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0094099"
+                                       },
+                                       {
+                                           "name":  "Classify_HeaderSizeExceeded_ReturnsSchemaViolation",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0004412"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_StatusNotPendingReplay_ReturnsNotEligibleNoLifecycleUpdate",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0136906"
+                                       },
+                                       {
+                                           "name":  "MoveAsync_RequestFailed_RethrowsAfterLogging",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0091319"
+                                       },
+                                       {
+                                           "name":  "Classify_NoSignalsAtAll_ReturnsUnknown",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005514"
+                                       },
+                                       {
+                                           "name":  "GetEventIdName_StructuredEventId_ReturnsName",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0013354"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_503_NoRetryAfterHeader_DefaultsTo2Seconds",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0045276"
+                                       },
+                                       {
+                                           "name":  "GetPendingReplayBatchAsync_ZeroMaxRecords_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0029568"
+                                       },
+                                       {
+                                           "name":  "GetFileAsync_EmptyFilename_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0079119"
+                                       },
+                                       {
+                                           "name":  "EmitAsync_NullCorrelationId_StillSendsWithEmptyScope",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestPublishTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0072644"
+                                       },
+                                       {
+                                           "name":  "Classify_SchemaMarkerWinsOverTransientMarkerInSameDescription",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0003812"
+                                       },
+                                       {
+                                           "name":  "GetByIdAsync_Missing_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0019671"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_500_ThrowsHttpRequestException",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0058842"
+                                       },
+                                       {
+                                           "name":  "AddAsync_HappyPath_PersistsRow",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.2076422"
+                                       },
+                                       {
+                                           "name":  "ExistsAsync_EmptyMessageId_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0021297"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_FindsCorrectAmongMultiple",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestCommonLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0051213"
+                                       },
+                                       {
+                                           "name":  "GetPendingReplayBatchAsync_OnlyReturnsPendingReplay",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0434119"
+                                       },
+                                       {
+                                           "name":  "ExistsAsync_EmptySourceEntity_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0024539"
+                                       },
+                                       {
+                                           "name":  "Classify_PoisonMarkerPresent_ReturnsPoison",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0005910"
+                                       },
+                                       {
+                                           "name":  "GetPendingReplayBatchAsync_OrdersByStatusUpdatedAscending",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0070568"
+                                       },
+                                       {
+                                           "name":  "GetByIdAsync_MissingRow_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestApiLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0050036"
+                                       },
+                                       {
+                                           "name":  "UpdateLifecycleAsync_MissingId_ThrowsInvalidOperation",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0025843"
+                                       },
+                                       {
+                                           "name":  "GetByIdentityAsync_Existing_ReturnsRecord",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0457476"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_IdempotencyConflictButNoExistingRow_RethrowsAsDefect",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0130473"
+                                       },
+                                       {
+                                           "name":  "Classify_ReasoningIncludesSourceAndDeliveryCount",
+                                           "className":  "FileIt.Infrastructure.Test.Classification.TestDeadLetterClassifier",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0003155"
+                                       },
+                                       {
+                                           "name":  "UpdateLifecycleAsync_StampsStatusUpdatedUtc",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0249561"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_DifferentEnvironment_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestSimpleRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0062079"
+                                       },
+                                       {
+                                           "name":  "SendMessageAsync_EmptyQueueName_ThrowsArgumentException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBusTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1272042"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_SendSucceeds_MessagePreservesCorrelationIdAndContentType",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0070750"
+                                       },
+                                       {
+                                           "name":  "UpdateLifecycleAsync_OnlyStatusProvided_LeavesOtherFieldsUntouched",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0045213"
+                                       },
+                                       {
+                                           "name":  "Constructor_NullLogger_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0030992"
+                                       },
+                                       {
+                                           "name":  "SaveAsync_StampsCreatedUtc",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexIdempotencyRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0032468"
+                                       },
+                                       {
+                                           "name":  "MoveAsync_SourceContainerMissing_CreatesIt",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0247196"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_NonIdempotencyDbUpdateException_Rethrows",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0097948"
+                                       },
+                                       {
+                                           "name":  "GetByIdentityAsync_Missing_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0025483"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_SendSucceeds_MessageStampsReplayedFromRecordIdAndEnqueuedTime",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0064060"
+                                       },
+                                       {
+                                           "name":  "SendMessageAsync_NullBody_ProducesMessageWithEmptyBody",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBusTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0094879"
+                                       },
+                                       {
+                                           "name":  "UploadAsync_NullStream_ThrowsArgumentNullException",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0077597"
+                                       },
+                                       {
+                                           "name":  "MoveAsync_SourceBlobMissing_LogsWarningAndDoesNotCopy",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0097729"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_PassesEnvelopeFieldsToClassifierInput",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0083904"
+                                       },
+                                       {
+                                           "name":  "Constructor_NullRepo_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0041243"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_SendThrowsOperationCanceled_RethrowsAndDoesNotUpdateLifecycle",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0089249"
+                                       },
+                                       {
+                                           "name":  "GetByClientRequestIdAsync_MatchingEnvironmentAndId_ReturnsRow",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestSimpleRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0393883"
+                                       },
+                                       {
+                                           "name":  "ListAsync_NoFilter_ReturnsAllNonDeleted",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0410091"
+                                       },
+                                       {
+                                           "name":  "IngestAsync_CancellationRequested_ThrowsBeforeWork",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0106145"
+                                       },
+                                       {
+                                           "name":  "ReplayBatchAsync_CancellationMidBatch_StopsAndRethrows",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0091167"
+                                       },
+                                       {
+                                           "name":  "GetEventIdName_StructuredEventIdMissingNameSubProperty_ReturnsNull",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0015204"
+                                       },
+                                       {
+                                           "name":  "UpdateTransformResultAsync_Existing_UpdatesAllFields",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDataFlowRequestLogRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0405492"
+                                       },
+                                       {
+                                           "name":  "GetByIdAsync_Existing_ReturnsRecord",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0031357"
+                                       },
+                                       {
+                                           "name":  "CreateDocumentAsync_EmptyIdempotencyKey_DoesNotSendHeader",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0053372"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_SendSucceeds_MessageGetsFreshMessageId",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0073762"
+                                       },
+                                       {
+                                           "name":  "Emit_NullConnectionString_ShortCircuitsWithoutThrowing",
+                                           "className":  "FileIt.Infrastructure.Test.Logging.TestDatabaseSink",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.3921311"
+                                       },
+                                       {
+                                           "name":  "ExistsAsync_DifferentTuple_ReturnsFalse",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestDeadLetterRecordRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0033125"
+                                       },
+                                       {
+                                           "name":  "GetDocumentAsync_500_ThrowsHttpRequestException",
+                                           "className":  "FileIt.Infrastructure.Test.HttpClients.TestComplexApiClient",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0048007"
+                                       },
+                                       {
+                                           "name":  "MoveAsync_DestinationContainerMissing_CreatesIt",
+                                           "className":  "FileIt.Infrastructure.Test.Tools.TestBlobTool",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0127260"
+                                       },
+                                       {
+                                           "name":  "Constructor_NullLogger_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Ingestion.TestDeadLetterIngestionService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0044251"
+                                       },
+                                       {
+                                           "name":  "ExportAsync_ExcludesDeletedByDefault",
+                                           "className":  "FileIt.Infrastructure.Test.Data.TestComplexDocumentRepo",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0055804"
+                                       },
+                                       {
+                                           "name":  "ReplayAsync_EmptyInitiatedBy_Throws",
+                                           "className":  "FileIt.Infrastructure.Test.DeadLetter.Replay.TestDeadLetterReplayService",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0041893"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.Complex.Integration",
+                         "total":  4,
+                         "passed":  4,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "IdempotencyKey_ReplaysSameResponse",
+                                           "className":  "FileIt.Module.Complex.Integration.SmokeTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0022182"
+                                       },
+                                       {
+                                           "name":  "Create_Then_Get_RoundTrip",
+                                           "className":  "FileIt.Module.Complex.Integration.SmokeTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0090099"
+                                       },
+                                       {
+                                           "name":  "Swagger_Spec_Available",
+                                           "className":  "FileIt.Module.Complex.Integration.SmokeTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0016728"
+                                       },
+                                       {
+                                           "name":  "Health_ReturnsOk",
+                                           "className":  "FileIt.Module.Complex.Integration.SmokeTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0162717"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.Complex.Test",
+                         "total":  13,
+                         "passed":  13,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "SameKeyDifferentBody_Conflicts",
+                                           "className":  "FileIt.Module.Complex.Test.IdempotencyManagerTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0020731"
+                                       },
+                                       {
+                                           "name":  "NameTooLong_BadRequest",
+                                           "className":  "FileIt.Module.Complex.Test.CreateDocumentCommandTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0011716"
+                                       },
+                                       {
+                                           "name":  "KeyTooLong_Invalid",
+                                           "className":  "FileIt.Module.Complex.Test.IdempotencyManagerTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0018662"
+                                       },
+                                       {
+                                           "name":  "Disabled_NeverFails",
+                                           "className":  "FileIt.Module.Complex.Test.ChaosInjectorTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0671298"
+                                       },
+                                       {
+                                           "name":  "ContentTooLarge_PayloadTooLarge",
+                                           "className":  "FileIt.Module.Complex.Test.CreateDocumentCommandTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0258798"
+                                       },
+                                       {
+                                           "name":  "NoKey_Skips",
+                                           "className":  "FileIt.Module.Complex.Test.IdempotencyManagerTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0070436"
+                                       },
+                                       {
+                                           "name":  "ValidRequest_Succeeds",
+                                           "className":  "FileIt.Module.Complex.Test.CreateDocumentCommandTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0089465"
+                                       },
+                                       {
+                                           "name":  "SameKeySameBody_Replays",
+                                           "className":  "FileIt.Module.Complex.Test.IdempotencyManagerTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0078941"
+                                       },
+                                       {
+                                           "name":  "ZeroRate_NeverFails",
+                                           "className":  "FileIt.Module.Complex.Test.ChaosInjectorTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0008941"
+                                       },
+                                       {
+                                           "name":  "ExemptPath_NeverFails",
+                                           "className":  "FileIt.Module.Complex.Test.ChaosInjectorTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0004473"
+                                       },
+                                       {
+                                           "name":  "FullRate_AlwaysFails",
+                                           "className":  "FileIt.Module.Complex.Test.ChaosInjectorTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0102322"
+                                       },
+                                       {
+                                           "name":  "UnknownKey_ProceedsAndSaves",
+                                           "className":  "FileIt.Module.Complex.Test.IdempotencyManagerTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0149489"
+                                       },
+                                       {
+                                           "name":  "EmptyName_BadRequest",
+                                           "className":  "FileIt.Module.Complex.Test.CreateDocumentCommandTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0028410"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.Services.App.Test",
+                         "total":  6,
+                         "passed":  6,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "ApiAdd_NullCorrelationId_StillPublishesWithGeneratedDocName",
+                                           "className":  "FileIt.Module.Services.App.Test.ApiAdd.TestApiFunc",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0186245"
+                                       },
+                                       {
+                                           "name":  "ApiAdd_ComplexUnavailable_BubblesExceptionForBrokerRetry",
+                                           "className":  "FileIt.Module.Services.App.Test.ApiAdd.TestApiFunc",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0226158"
+                                       },
+                                       {
+                                           "name":  "ApiAdd_ComplexUnavailable_DoesNotWriteAuditRow",
+                                           "className":  "FileIt.Module.Services.App.Test.ApiAdd.TestApiFunc",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0151983"
+                                       },
+                                       {
+                                           "name":  "ApiAdd_HappyPath_PublishesAndStampsAuditRow",
+                                           "className":  "FileIt.Module.Services.App.Test.ApiAdd.TestApiFunc",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:01.8755490"
+                                       },
+                                       {
+                                           "name":  "ApiAdd_CancellationRequested_Throws",
+                                           "className":  "FileIt.Module.Services.App.Test.ApiAdd.TestApiFunc",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0091845"
+                                       },
+                                       {
+                                           "name":  "ApiAdd_PassesCorrelationIdAsIdempotencyKey",
+                                           "className":  "FileIt.Module.Services.App.Test.ApiAdd.TestApiFunc",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0116681"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.Services.Integration",
+                         "total":  0,
+                         "passed":  0,
+                         "failed":  0,
+                         "tests":  [
+
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.SimpleFlow.Integration",
+                         "total":  1,
+                         "passed":  1,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "TestMethod1",
+                                           "className":  "FileIt.Module.SimpleFlow.Integration.UnitTest1",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0236332"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.SimpleFlow.Test",
+                         "total":  10,
+                         "passed":  10,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "RunAsync_HappyPath_LogsThenMovesThenSends",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WatchInbound.TestWatchInbound",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:01.6138205"
+                                       },
+                                       {
+                                           "name":  "RunAsync_PayloadFileNameMatchesBlobName",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WatchInbound.TestWatchInbound",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0066165"
+                                       },
+                                       {
+                                           "name":  "RunAsync_CancellationAfterAdd_ThrowsBeforeMove",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WatchInbound.TestWatchInbound",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0293014"
+                                       },
+                                       {
+                                           "name":  "RunAsync_RequestLogMissing_SkipsBenignly",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WaitOnApiUpload.TestBasicApiAddHandler",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0107195"
+                                       },
+                                       {
+                                           "name":  "RunAsync_GeneratesUniqueMessageIdPerCall",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WatchInbound.TestWatchInbound",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0181300"
+                                       },
+                                       {
+                                           "name":  "RunAsync_HappyPath_MovesBlobAndStampsApiId",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WaitOnApiUpload.TestBasicApiAddHandler",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0279002"
+                                       },
+                                       {
+                                           "name":  "RunAsync_RequestLogMissing_DoesNotMoveBlob",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WaitOnApiUpload.TestBasicApiAddHandler",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0104890"
+                                       },
+                                       {
+                                           "name":  "RunAsync_CancellationRequested_ThrowsBeforeMovingBlob",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WaitOnApiUpload.TestBasicApiAddHandler",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0109603"
+                                       },
+                                       {
+                                           "name":  "RunAsync_BlobNameMissing_Throws",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WaitOnApiUpload.TestBasicApiAddHandler",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0090851"
+                                       },
+                                       {
+                                           "name":  "RunAsync_NullCorrelationId_LooksUpWithEmptyString",
+                                           "className":  "FileIt.Module.SimpleFlow.Test.WaitOnApiUpload.TestBasicApiAddHandler",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0046716"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.Ui.Integration",
+                         "total":  1,
+                         "passed":  1,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "IntegrationProjectBuilds",
+                                           "className":  "FileIt.Module.Ui.Integration.IntegrationSmokeTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.0144482"
+                                       }
+                                   ]
+                     },
+                     {
+                         "project":  "FileIt.Module.Ui.Test",
+                         "total":  1,
+                         "passed":  1,
+                         "failed":  0,
+                         "tests":  [
+                                       {
+                                           "name":  "Defaults_AreEmptyStrings",
+                                           "className":  "FileIt.Module.Ui.Test.UiConfigTests",
+                                           "outcome":  "Passed",
+                                           "duration":  "00:00:00.1338300"
+                                       }
+                                   ]
+                     }
+                 ]
+}

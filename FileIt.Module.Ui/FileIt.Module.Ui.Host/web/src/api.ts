@@ -66,6 +66,7 @@ export const api = {
   sendApi: () => postJson<DemoResult>("/api/demo/send-api"),
   publishBroadcast: () => postJson<DemoResult>("/api/demo/publish-broadcast"),
   dropPoison: () => postJson<DemoResult>("/api/demo/drop-poison"),
+  runSalesforce: () => postJson<DemoResult>("/api/demo/run-salesforce"),
   uploadFile: (file: File, module: string = "dataflow") => {
     const form = new FormData();
     form.append("file", file);

@@ -80,14 +80,17 @@ public class TestBasicApiAddHandler
     }
 
     [TestMethod]
-    public async Task RunAsync_RequestLogMissing_Throws()
+    public async Task RunAsync_RequestLogMissing_SkipsBenignly()
     {
         _requestLogRepoMock
             .Setup(x => x.GetByClientRequestIdAsync(It.IsAny<string>()))
             .ReturnsAsync((SimpleRequestLog?)null);
 
-        await Assert.ThrowsAsync<Exception>(
-            () => target.RunAsync(BuildMessage(Guid.NewGuid().ToString())));
+        await target.RunAsync(BuildMessage(Guid.NewGuid().ToString()));
+
+        _blobToolMock.Verify(x => x.MoveAsync(
+            It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()
+        ), Times.Never);
     }
 
     [TestMethod]

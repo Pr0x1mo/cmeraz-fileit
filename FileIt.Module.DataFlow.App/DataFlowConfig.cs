@@ -20,4 +20,8 @@ public class DataFlowConfig
 
     // The name of the service bus topic we publish to after the transform is complete
     public string TransformTopicName { get; set; } = string.Empty;
+    // The numeric id of the Databricks Salesforce Workflow job that FileIt
+    // triggers when a BIC_ActiveCustomer file lands. Comes from app settings.
+    // (Created by Terraform; find it in the Databricks Workflows UI.)
+    public long SalesforceDatabricksJobId { get; set; }
 }

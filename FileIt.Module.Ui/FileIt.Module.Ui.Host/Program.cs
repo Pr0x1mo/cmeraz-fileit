@@ -20,7 +20,21 @@ builder.Services.AddInfrastructure(infrastructureConfig);
 
 // HttpClient used by the demo trigger endpoints to call the other FAs' test producers and blob uploads
 builder.Services.AddHttpClient("demo");
-
+// Databricks job client, so the Run Salesforce ETL button can fire the
+// Databricks Workflow directly. Pre-loads the workspace URL and token from
+// app settings onto the HttpClient (same pattern as the dataflow host).
+builder.Services.AddHttpClient<FileIt.Domain.Interfaces.IDatabricksJobClient, FileIt.Infrastructure.HttpClients.DatabricksJobClient>(client =>
+{
+    var workspaceUrl = builder.Configuration.GetValue<string>("DatabricksWorkspaceUrl")
+        ?? throw new ApplicationException("Missing DatabricksWorkspaceUrl.");
+    var token = builder.Configuration.GetValue<string>("DatabricksToken")
+        ?? throw new ApplicationException("Missing DatabricksToken.");
+    if (!workspaceUrl.EndsWith('/')) workspaceUrl += "/";
+    client.BaseAddress = new Uri(workspaceUrl);
+    client.DefaultRequestHeaders.Authorization =
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
 builder.Logging.ClearProviders();
 ICommonLogConfig logConfig = builder.Configuration.GetCommonLogConfig();
 logConfig.Environment = logConfig.Environment ?? builder.Environment.EnvironmentName;

@@ -19,13 +19,15 @@ public class WatchInbound : IWatchInbound
     private readonly ITalkToApi _busTool;
     private readonly DataFlowConfig _config;
     private readonly IDataFlowRequestLogRepo _requestLogRepo;
+    private readonly IIngestionRouter _router;
 
     public WatchInbound(
         ILogger<WatchInbound> logger,
         IHandleFiles blobTool,
         ITalkToApi busTool,
         IDataFlowRequestLogRepo requestLogRepo,
-        DataFlowConfig config
+        DataFlowConfig config,
+        IIngestionRouter router
     )
     {
         _blobTool = blobTool;
@@ -33,11 +35,27 @@ public class WatchInbound : IWatchInbound
         _config = config;
         _logger = logger;
         _requestLogRepo = requestLogRepo;
+        _router = router;
     }
 
     public async Task RunAsync(string blobName, string correlationId, CancellationToken cancellationToken = default)
     {
-        // Step 1 - write a record to the database so we can trace this file through the whole flow
+        // Step 0 - routing decision. Before we do anything GLAccount-specific,
+        // ask the router whether this file's NAME means it belongs to a
+        // downstream system (e.g. a BIC_ActiveCustomer file goes to the
+        // Databricks Salesforce job, not the in-FileIt C# transform). If the
+        // router handled it, we stop here. The file-arrival is still logged by
+        // the Watcher that called us, and the Databricks run carries the same
+        // CorrelationId, so the trace stays intact across both systems.
+        if (await _router.TryRouteToDatabricksAsync(blobName, correlationId, cancellationToken))
+        {
+            _logger.LogInformation(
+                DataFlowEvents.DataFlowWatcherQueueTransform,
+                "File {BlobName} routed to Databricks; skipping in-FileIt transform.",
+                blobName
+            );
+            return;
+        }
         _logger.LogInformation(
             DataFlowEvents.DataFlowWatcherAddRequestLog,
             "Adding RequestLog for {BlobName}",

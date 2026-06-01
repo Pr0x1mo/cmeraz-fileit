@@ -16,12 +16,20 @@ public class DemoApi
     private readonly IHttpClientFactory _httpFactory;
     private readonly IConfiguration _config;
     private readonly ILogger<DemoApi> _logger;
+    private readonly FileIt.Domain.Interfaces.IDatabricksJobClient _databricks;
+    private readonly long _salesforceJobId;
 
-    public DemoApi(IHttpClientFactory httpFactory, IConfiguration config, ILogger<DemoApi> logger)
+    public DemoApi(
+        IHttpClientFactory httpFactory,
+        IConfiguration config,
+        ILogger<DemoApi> logger,
+        FileIt.Domain.Interfaces.IDatabricksJobClient databricks)
     {
         _httpFactory = httpFactory;
         _config = config;
         _logger = logger;
+        _databricks = databricks;
+        _salesforceJobId = config.GetValue<long>("SalesforceDatabricksJobId");
     }
 
     [Function("DemoDropCsv")]
@@ -86,7 +94,32 @@ public class DemoApi
         await CopySeedAsync("dataflow", "seeds", "GLAccount-POISONED.csv", "dataflow-source", fileName, correlationId, ct);
         return new OkObjectResult(new { correlationId, fileName, module = "dataflow", pattern = "dlq" });
     }
+    [Function("DemoRunSalesforce")]
+    public async Task<IActionResult> RunSalesforce(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "demo/run-salesforce")] HttpRequest req,
+        CancellationToken ct)
+    {
+        var correlationId = Guid.NewGuid().ToString();
+        var fileName = "BIC_ActiveCustomer.txt";
 
+        // Copy the seeded BIC file into the salesforce container with a fresh
+        // correlationId in metadata, same seed-copy pattern as the CSV demos.
+        await CopySeedAsync("ui", "seeds", fileName, "salesforce", fileName, correlationId, ct);
+
+        // Fire the Databricks Salesforce job directly, passing the same
+        // correlationId so the Databricks run ties back to this trigger.
+        var run = await _databricks.RunJobNowAsync(
+            _salesforceJobId, correlationId, fileName, ct);
+
+        return new OkObjectResult(new
+        {
+            correlationId,
+            fileName,
+            module = "databricks-salesforce",
+            pattern = "etl-handoff",
+            databricksRunId = run.RunId
+        });
+    }
     [Function("DemoUploadFile")]
     public async Task<IActionResult> UploadFile(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "demo/upload")] HttpRequest req,
