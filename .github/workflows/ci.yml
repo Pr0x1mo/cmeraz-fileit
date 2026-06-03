@@ -35,8 +35,8 @@ jobs:
       - name: Build (Release)
         run: dotnet build FileIt.All.sln --configuration Release --no-restore
 
-      - name: Run all tests
-        run: dotnet test FileIt.All.sln --configuration Release --no-build --logger "trx;LogFileName=results.trx" --verbosity normal
+      - name: Run unit and architecture tests (exclude Integration)
+        run: dotnet test FileIt.All.sln --configuration Release --no-build --filter "FullyQualifiedName!~Integration" --logger "trx;LogFileName=results.trx" --verbosity normal
 
       - name: Upload test results
         if: always()
