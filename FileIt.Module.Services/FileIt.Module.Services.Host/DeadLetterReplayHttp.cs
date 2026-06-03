@@ -67,7 +67,7 @@ public class DeadLetterReplayHttp
 
     [Function(FunctionName)]
     public async Task<HttpResponseData> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "post", Route = Route)]
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = Route)]
             HttpRequestData request,
         long id,
         FunctionContext context)

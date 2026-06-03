@@ -452,3 +452,7 @@ db-deploy-report.xml
 /simple-test*.txt
 /GLAccount-poison.csv
 
+
+# local preview files
+/bic-preview.txt
+/glaccount-preview.csv

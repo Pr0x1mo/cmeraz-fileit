@@ -8,5 +8,10 @@
             },
             "enableLiveMetricsFilters": true
         }
+    },
+    "extensions": {
+        "http": {
+            "maxRequestBodySize": 1073741824
+        }
     }
 }

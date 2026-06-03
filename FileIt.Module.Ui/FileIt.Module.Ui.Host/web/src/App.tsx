@@ -4,7 +4,8 @@ import { Pipeline } from "./Pipeline";
 import { TestResults } from "./TestResults";
 
 const keyOf = (f: Flow) => f.correlationId ?? f.invocationId ?? `id:${f.id}`;
-const shortId = (s: string | null | undefined) => (s ? s.slice(0, 8) : "(no id)");
+const shortId = (s: string | null | undefined) => s ?? "(no id)";
+
 
 function DragBar({ orientation, current, setValue, min, max, invert = false }: {
     orientation: "vertical" | "horizontal";
@@ -44,6 +45,28 @@ function DragBar({ orientation, current, setValue, min, max, invert = false }: {
     return <div className={className} onMouseDown={onMouseDown} />;
 }
 
+// Local cache of {correlationId -> fileName} populated the moment a click returns
+// from the server. The endpoint already tells us the exact file it just wrote;
+// we remember it client-side so the Recent flows list can label YOUR row with
+// YOUR filename, even when other flows interleave between clicks.
+// Persisted in sessionStorage so a page refresh during a demo doesn't lose it.
+const CLICK_MAP_KEY = "fileit.clickedFiles.v1";
+function loadClickMap(): Record<string, string> {
+    try {
+        const raw = sessionStorage.getItem(CLICK_MAP_KEY);
+        return raw ? JSON.parse(raw) : {};
+    } catch {
+        return {};
+    }
+}
+function saveClickMap(map: Record<string, string>) {
+    try {
+        sessionStorage.setItem(CLICK_MAP_KEY, JSON.stringify(map));
+    } catch {
+        // ignore quota errors, the cache is best-effort
+    }
+}
+
 export default function App() {
     const [flows, setFlows] = useState<Flow[]>([]);
     const [dlq, setDlq] = useState<DeadLetter[]>([]);
@@ -55,6 +78,16 @@ export default function App() {
     const [rightPanel, setRightPanel] = useState<"dlq" | "tests">("dlq");
     const [rightWidth, setRightWidth] = useState(320);
     const [bottomHeight, setBottomHeight] = useState(240);
+    const [clickedFiles, setClickedFiles] = useState<Record<string, string>>(() => loadClickMap());
+
+    const rememberClickedFile = (correlationId: string, fileName: string | undefined) => {
+        if (!correlationId || !fileName) return;
+        setClickedFiles(prev => {
+            const next = { ...prev, [correlationId]: fileName };
+            saveClickMap(next);
+            return next;
+        });
+    };
 
     const refreshLists = async () => {
         try {
@@ -107,14 +140,20 @@ export default function App() {
         };
     }, [selected]);
 
-    const trigger = async (label: string, fn: () => Promise<{ correlationId: string }>) => {
+    const trigger = async (
+        label: string,
+        fn: () => Promise<{ correlationId: string; fileName?: string }>
+    ) => {
         setBusy(true);
         setToast(`Firing ${label}...`);
         try {
             const r = await fn();
             setActiveNode(undefined);
             setSelected(r.correlationId);
-            setToast(`${label} fired. CorrelationId ${r.correlationId}`);
+            rememberClickedFile(r.correlationId, r.fileName);
+            const now = new Date().toLocaleTimeString();
+            const filePart = r.fileName ? `File: ${r.fileName}.` : "";
+            setToast(`${label} fired at ${now}. ${filePart} CorrelationId ${r.correlationId}`);
             setTimeout(refreshLists, 1500);
             setTimeout(refreshLists, 5000);
         } catch (e: any) {
@@ -182,37 +221,59 @@ export default function App() {
                 </button>
                 <div className="text-xs uppercase tracking-wide text-slate-400 mt-4">Upload your own</div>
                 <label className="rounded bg-slate-700 hover:bg-slate-600 px-3 py-2 cursor-pointer text-sm">
-                    <input type="file" className="hidden" onChange={async e => {
-                        const f = e.target.files?.[0];
-                        if (!f) return;
+                    <input type="file" multiple className="hidden" onChange={async e => {
+                        const files = Array.from(e.target.files ?? []);
+                        if (files.length === 0) return;
+                        const tooBig = files.find(f => f.size > 100 * 1024 * 1024);
+                        if (tooBig) {
+                            setToast(`File too big: ${tooBig.name} is ${Math.round(tooBig.size/1024/1024)} MB. Max 100 MB.`);
+                            e.target.value = "";
+                            return;
+                        }
                         setBusy(true);
-                        setToast(`Uploading ${f.name}...`);
+                        setToast(`Uploading ${files.length} file(s)...`);
                         try {
-                            const target = /poison/i.test(f.name) ? "dataflow" : (f.name.toLowerCase().endsWith(".csv") ? "dataflow" : "simple");
-                            const r = await api.uploadFile(f, target);
+                            const results = await Promise.all(files.map(f => {
+                                const target = f.name.toLowerCase().endsWith(".csv") 
+                                    ? "dataflow" 
+                                    : f.name.toLowerCase().endsWith(".txt") 
+                                        ? "salesforce" 
+                                        : "dataflow";
+                                return api.uploadFile(f, target).then(r => ({ r, originalName: f.name }));
+                            }));
+                            results.forEach(({ r, originalName }) =>
+                                rememberClickedFile(r.correlationId, r.fileName ?? originalName)
+                            );
                             setActiveNode(undefined);
-                            setSelected(r.correlationId);
-                            setToast(`Uploaded ${f.name}. CorrelationId ${r.correlationId}`);
+                            setSelected(results[0].r.correlationId);
+                            const now = new Date().toLocaleTimeString();
+                            setToast(`Uploaded ${results.length} file(s) at ${now}. Last: ${results[results.length - 1].originalName}. CorrelationId ${results[results.length - 1].r.correlationId}`);
                             setTimeout(refreshLists, 1500);
                             setTimeout(refreshLists, 5000);
-                        } catch (e: any) {
-                            setToast(`Upload failed: ${e?.message ?? e}`);
+                        } catch (err: any) {
+                            setToast(`Upload failed: ${err?.message ?? err}`);
                         } finally {
                             setBusy(false);
                             e.target.value = "";
                         }
                     }} />
-                    Pick file...
+                    Pick file(s)...
                 </label>
-                <div className="text-[10px] text-slate-500 -mt-2">CSV goes to dataflow. Other files go to simple.</div>
+                <div className="text-[10px] text-slate-500 -mt-2">CSV goes to dataflow. Other files go to simple. Shift-click to select many.</div>
 
                 <div className="text-xs uppercase tracking-wide text-slate-400 mt-4">Recent flows</div>
                 <div className="flex flex-col gap-1 overflow-auto">
                     {flows.map(f => {
                         const k = keyOf(f);
+                        // Prefer the locally-remembered click filename (truth from the click response),
+                        // then fall back to whatever the server attached, then nothing.
+                        const cid = f.correlationId ?? "";
+                        const fileName = (cid && clickedFiles[cid]) || f.fileName || null;
+                        const isMine = cid && cid in clickedFiles;
                         return (
-                            <button key={f.id} onClick={() => { setSelected(k); setActiveNode(undefined); }} className={`text-left text-xs px-2 py-1 rounded hover:bg-slate-800 ${selected === k ? "bg-slate-800" : ""}`}>
-                                <div className="font-mono">{shortId(k)}</div>
+                            <button key={f.id} onClick={() => { setSelected(k); setActiveNode(undefined); }} className={`text-left text-xs px-2 py-1 rounded hover:bg-slate-800 ${selected === k ? "bg-slate-800" : ""} ${isMine ? "border-l-2 border-emerald-500 pl-2" : ""}`}>
+                                <div className="font-mono break-all">{shortId(k)}</div>
+                                {fileName && <div className="text-slate-300 truncate">{fileName}</div>}
                                 <div className="text-slate-400">{(f.application ?? "").replace("FileIt.Module.", "").replace(".Host", "")} {new Date(f.createdOn).toLocaleTimeString()}</div>
                             </button>
                         );
@@ -258,7 +319,20 @@ export default function App() {
                                 </div>
                                 <div className="text-slate-400">{d.sourceEntityName}</div>
                                 <div className="text-slate-500">delivery {d.deliveryCount}, {d.status}</div>
-                                <button onClick={() => api.replay(d.deadLetterRecordId).then(() => setToast(`Replay queued for #${d.deadLetterRecordId}`)).catch(e => setToast(`Replay failed: ${e?.message}`))} className="mt-1 px-2 py-0.5 rounded bg-emerald-800 hover:bg-emerald-700">Replay</button>
+                                
+                                <button onClick={() => api.replay(d.deadLetterRecordId)
+                                    .then(() => {
+                                        const cid = (d as any).correlationId;
+                                        if (cid) {
+                                            setSelected(cid);
+                                            setActiveNode(undefined);
+                                        }
+                                        setToast(`Replay queued for #${d.deadLetterRecordId}. Watching CorrelationId ${cid ?? "(unknown)"}`);
+                                        setTimeout(refreshLists, 1500);
+                                        setTimeout(refreshLists, 5000);
+                                    })
+                                    .catch(e => setToast(`Replay failed: ${e?.message}`))}
+                                    className="mt-1 px-2 py-0.5 rounded bg-emerald-800 hover:bg-emerald-700">Replay</button>
                             </div>
                         ))}
                     </>

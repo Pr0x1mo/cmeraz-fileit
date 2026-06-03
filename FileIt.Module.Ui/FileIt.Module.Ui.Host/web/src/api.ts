@@ -6,6 +6,7 @@ export type Flow = {
   sourceContext: string;
   createdOn: string;
   level: string;
+  fileName?: string;
 };
 
 export type LogRow = {
