@@ -20,10 +20,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup .NET 10
+      - name: Setup .NET 10 (preview SDK)
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Print SDK info
+        run: dotnet --info
 
       - name: Restore
         run: dotnet restore FileIt.All.sln
