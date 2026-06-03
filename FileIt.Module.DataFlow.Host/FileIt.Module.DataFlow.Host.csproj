@@ -55,7 +55,7 @@
         </None>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="C:\Users\Proximus\source\repos\cmeraz-fileit-develop\FileIt.Infrastructure\FileIt.Infrastructure\FileIt.Infrastructure.csproj" />
+        <ProjectReference Include="..\FileIt.Infrastructure\FileIt.Infrastructure\FileIt.Infrastructure.csproj" />
         <ProjectReference Include="..\FileIt.Module.DataFlow.App\FileIt.Module.DataFlow.App.csproj" />
     </ItemGroup>
     <Target Name="Package" AfterTargets="Publish">
